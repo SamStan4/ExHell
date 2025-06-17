@@ -1,4 +1,4 @@
-#!/usr/env/bin bash
+#!/usr/bin/env bash
 
 mvn archetype:generate \
         -DarchetypeGroupId=org.openjfx \
