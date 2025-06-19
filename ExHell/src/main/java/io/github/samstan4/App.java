@@ -1,9 +1,9 @@
 package io.github.samstan4;
 
+import java.io.FileNotFoundException;
+
+import io.github.samstan4.view.MainView;
 import javafx.application.Application;
-import javafx.scene.Scene;
-// import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
@@ -12,17 +12,10 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-  @Override
-  public void start(Stage stage) {
-    StackPane root = new StackPane();
-    root.getStyleClass().add("root");
-
-    Scene scene = new Scene(root, 640, 480);
-    scene.getStylesheets().add(
-      getClass().getResource("styles.css").toExternalForm()
-    );
-
-    stage.setScene(scene);
+  @Override 
+  public void start(Stage stage) throws FileNotFoundException {
+    MainView view = new MainView();
+    stage.setScene(view.getScene());
     stage.setTitle("ExHell");
     stage.show();
   }
