@@ -13,9 +13,10 @@ public:
   exhell_wrapper(exhell_wrapper&&) = delete;
   exhell_wrapper& operator=(exhell_wrapper&&) = delete;
 
-  void run_exhell();
+  void run_exhell(int, char**);
 
 private:
+
   exhell_wrapper() = default;
   ~exhell_wrapper() = default;
 };

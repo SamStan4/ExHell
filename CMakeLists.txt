@@ -4,12 +4,13 @@ project(ExHell)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_AUTOMOC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
 set(UI_SOURCES
-  src/ui/main_ui_controller.cpp
-  src/ui/main_ui_controller.hpp
+  src/ui/exhell_main_view.cpp
+  src/ui/exhell_main_view.hpp
 )
 
 set(WRAPPER_SOURCES
