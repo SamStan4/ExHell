@@ -10,7 +10,7 @@ namespace exhell
 
   public:
 
-    explicit spreadsheet_main_view(QWidget* = nullptr, const int = 100, const int = 100);
+    explicit spreadsheet_main_view(QWidget* = nullptr, const int = 1000, const int = 1000);
 
     ~spreadsheet_main_view(void);
 
@@ -24,9 +24,9 @@ namespace exhell
 
     void set_column_headers(void);
 
-    // event stuff
-
     void register_event_handlers(void);
+
+  private slots:
 
     void handle_cell_clicked_event(int, int);
 

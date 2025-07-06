@@ -14,7 +14,7 @@ exhell::exhell_wrapper& exhell::exhell_wrapper::get_instance()
 void exhell::exhell_wrapper::run_exhell(int argc, char** argv)
 {
   QApplication exhell_app(argc, argv);
-  exhell_main_view exhell_view;
+  exhell_main_view& exhell_view = exhell::exhell_main_view::get_instance();
   exhell_view.show();
   exhell_app.exec();
 }
