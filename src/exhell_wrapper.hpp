@@ -2,21 +2,25 @@
 
 #include <iostream>
 
-class exhell_wrapper
+namespace exhell
 {
-public:
-  static exhell_wrapper& get_instance();
+  class exhell_wrapper
+  {
+  public:
 
-  exhell_wrapper(const exhell_wrapper&) = delete;
-  exhell_wrapper& operator=(const exhell_wrapper&) = delete;
+    exhell_wrapper(const exhell_wrapper&) = delete;
+    exhell_wrapper& operator=(const exhell_wrapper&) = delete;
 
-  exhell_wrapper(exhell_wrapper&&) = delete;
-  exhell_wrapper& operator=(exhell_wrapper&&) = delete;
+    exhell_wrapper(exhell_wrapper&&) = delete;
+    exhell_wrapper& operator=(exhell_wrapper&&) = delete;
 
-  void run_exhell(int, char**);
+    static exhell_wrapper& get_instance();
 
-private:
+    void run_exhell(int, char**);
 
-  exhell_wrapper() = default;
-  ~exhell_wrapper() = default;
-};
+  private:
+
+    exhell_wrapper();
+    ~exhell_wrapper();
+  };
+}

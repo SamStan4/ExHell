@@ -2,14 +2,23 @@
 
 #include <QMainWindow>
 
-class exhell_main_view : public QMainWindow
+#include "ui/spreadsheet_main_view.hpp"
+
+namespace exhell
 {
-  Q_OBJECT
+  class exhell_main_view : public QMainWindow
+  {
+    Q_OBJECT
 
-public:
+  public:
 
-  explicit exhell_main_view(QWidget* = nullptr, const int = 800, const int = 600);
+    explicit exhell_main_view(QWidget* = nullptr, const int = 800, const int = 600);
 
-  ~exhell_main_view();
+    ~exhell_main_view();
 
-};
+  private:
+
+    spreadsheet_main_view spreadsheet_view;
+
+  };
+}

@@ -8,9 +8,16 @@ set(CMAKE_AUTOMOC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 
+set(UTIL_SOURCES
+  src/util/exhell_utility_functions.cpp
+  src/util/exhell_utility_functions.hpp
+)
+
 set(UI_SOURCES
   src/ui/exhell_main_view.cpp
   src/ui/exhell_main_view.hpp
+  src/ui/spreadsheet_main_view.cpp
+  src/ui/spreadsheet_main_view.hpp
 )
 
 set(WRAPPER_SOURCES
@@ -26,11 +33,13 @@ add_executable(ExHell
   ${MAIN_SRC}
   ${WRAPPER_SOURCES}
   ${UI_SOURCES}
+  ${UTIL_SOURCES}
 )
 
 target_include_directories(ExHell PRIVATE
   src
   src/ui
+  src/util
 )
 
 target_link_libraries(ExHell
