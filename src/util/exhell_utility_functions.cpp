@@ -74,7 +74,7 @@ int exhell::exhell_row_to_number(const std::string& _row)
   return std::stoi(_row) - 1;
 }
 
-bool is_valid_exhell_column(const std::string& _column)
+bool exhell::is_valid_exhell_column(const std::string& _column)
 {
   static std::regex uppercase_pattern("^[A-Z]+$");
 
@@ -86,7 +86,7 @@ bool is_valid_exhell_column(const std::string& _column)
   return std::regex_match(_column, uppercase_pattern);
 }
 
-bool is_valid_exhell_row(const std::string& _row)
+bool exhell::is_valid_exhell_row(const std::string& _row)
 {
   static std::regex number_pattern("^[1-9][0-9]*$");
 
