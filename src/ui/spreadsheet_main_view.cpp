@@ -1,8 +1,10 @@
 #include "spreadsheet_main_view.hpp"
 
+#include <iostream>
 #include <QHeaderView>
 
 #include "util/exhell_utility_functions.hpp"
+#include "exhell_macros.hpp"
 
 // MARK: public
 
@@ -11,31 +13,30 @@ exhell::spreadsheet_main_view::spreadsheet_main_view(QWidget* _parent, const int
 {
   this->set_default_view_config();
   this->set_headers();
+  this->register_event_handlers();
 }
 
-exhell::spreadsheet_main_view::~spreadsheet_main_view() = default;
+exhell::spreadsheet_main_view::~spreadsheet_main_view(void) = default;
 
 // MARK: private
 
-void exhell::spreadsheet_main_view::set_default_view_config()
+void exhell::spreadsheet_main_view::set_default_view_config(void)
 {
   this->setAlternatingRowColors(true);
   this->setSelectionBehavior(QAbstractItemView::SelectItems);
   this->setGridStyle(Qt::SolidLine);
-
-  // Make it so the last column does not stretch like crazy when the table is small.
   this->horizontalHeader()->setStretchLastSection(false);
   this->verticalHeader()->setDefaultSectionSize(25);
   this->verticalHeader()->setFixedWidth(50);
 }
 
-void exhell::spreadsheet_main_view::set_headers()
+void exhell::spreadsheet_main_view::set_headers(void)
 {
   this->set_column_headers();
   this->set_row_headers();
 }
 
-void exhell::spreadsheet_main_view::set_row_headers()
+void exhell::spreadsheet_main_view::set_row_headers(void)
 {
   const int num_rows = this->rowCount();
   QStringList row_headers;
@@ -49,7 +50,7 @@ void exhell::spreadsheet_main_view::set_row_headers()
   this->setVerticalHeaderLabels(row_headers);
 }
 
-void exhell::spreadsheet_main_view::set_column_headers()
+void exhell::spreadsheet_main_view::set_column_headers(void)
 {
   const int num_cols = this->columnCount();
   QStringList column_headers;
@@ -61,4 +62,41 @@ void exhell::spreadsheet_main_view::set_column_headers()
   }
 
   this->setHorizontalHeaderLabels(column_headers);
+}
+
+void exhell::spreadsheet_main_view::register_event_handlers(void)
+{
+  QObject::connect(this, &QTableWidget::cellClicked, this, &exhell::spreadsheet_main_view::handle_cell_clicked_event);
+  QObject::connect(this, &QTableWidget::cellDoubleClicked, this, &exhell::spreadsheet_main_view::handle_cell_double_clicked_event);
+  QObject::connect(this, &QTableWidget::itemChanged, this, &exhell::spreadsheet_main_view::handle_cell_contents_changed_event);
+}
+
+void exhell::spreadsheet_main_view::handle_cell_clicked_event(int _row, int _col)
+{
+  #if EXHELL_EVENT_LOGS
+    std::cout << MAGENTA << "cell clicked event: " << exhell::number_to_exhell_row(_row) << exhell::number_to_exhell_column(_col) << RESET << std::endl;
+  #endif
+
+  // TODO: more logic here
+}
+
+void exhell::spreadsheet_main_view::handle_cell_double_clicked_event(int _row, int _col)
+{
+  #if EXHELL_EVENT_LOGS
+    std::cout << MAGENTA << "cell double clicked event: " << exhell::number_to_exhell_row(_row) << exhell::number_to_exhell_column(_col) << RESET << std::endl;
+  #endif
+
+  // TODO: more logic here
+}
+
+void exhell::spreadsheet_main_view::handle_cell_contents_changed_event(QTableWidgetItem* _item)
+{
+  const int row = _item->row();
+  const int col = _item->column();
+
+  #if EXHELL_EVENT_LOGS
+    std::cout << MAGENTA << "cell contents changed event: " << exhell::number_to_exhell_row(row) << exhell::number_to_exhell_column(col) << RESET << std::endl;
+  #endif
+
+  // TODO: much more logic here
 }

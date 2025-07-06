@@ -25,11 +25,16 @@ set(WRAPPER_SOURCES
   src/exhell_wrapper.hpp
 )
 
+set(MACRO_SOURCE
+  src/exhell_macros.hpp
+)
+
 set(MAIN_SRC
   src/main.cpp
 )
 
 add_executable(ExHell
+  ${MACRO_SOURCE}
   ${MAIN_SRC}
   ${WRAPPER_SOURCES}
   ${UI_SOURCES}
