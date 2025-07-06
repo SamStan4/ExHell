@@ -37,20 +37,6 @@ void exhell::spreadsheet_main_view::set_headers()
 
 void exhell::spreadsheet_main_view::set_row_headers()
 {
-  const int num_cols = this->columnCount();
-  QStringList column_headers;
-
-  for (int i = 0; i < num_cols; ++i)
-  {
-    QString new_column_header = QString::fromStdString(exhell::number_to_exhell_column(i));
-    column_headers.append(new_column_header);
-  }
-
-  this->setHorizontalHeaderLabels(column_headers);
-}
-
-void exhell::spreadsheet_main_view::set_column_headers()
-{
   const int num_rows = this->rowCount();
   QStringList row_headers;
 
@@ -61,4 +47,18 @@ void exhell::spreadsheet_main_view::set_column_headers()
   }
 
   this->setVerticalHeaderLabels(row_headers);
+}
+
+void exhell::spreadsheet_main_view::set_column_headers()
+{
+  const int num_cols = this->columnCount();
+  QStringList column_headers;
+
+  for (int i = 0; i < num_cols; ++i)
+  {
+    QString new_column_header = QString::fromStdString(exhell::number_to_exhell_column(i));
+    column_headers.append(new_column_header);
+  }
+
+  this->setHorizontalHeaderLabels(column_headers);
 }
