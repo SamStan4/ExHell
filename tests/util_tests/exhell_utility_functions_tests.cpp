@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "exhell_utility_functions.hpp"
+
+#include "util/exhell_utility_functions.hpp"
 
 class number_to_column_test : public ::testing::Test {};
 

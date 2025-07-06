@@ -33,5 +33,7 @@ namespace exhell
     void handle_cell_double_clicked_event(int, int);
 
     void handle_cell_contents_changed_event(QTableWidgetItem*);
+
+    void handle_current_cell_changed_event(int, int, int, int);
   };
 }

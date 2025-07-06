@@ -69,6 +69,7 @@ void exhell::spreadsheet_main_view::register_event_handlers(void)
   QObject::connect(this, &QTableWidget::cellClicked, this, &exhell::spreadsheet_main_view::handle_cell_clicked_event);
   QObject::connect(this, &QTableWidget::cellDoubleClicked, this, &exhell::spreadsheet_main_view::handle_cell_double_clicked_event);
   QObject::connect(this, &QTableWidget::itemChanged, this, &exhell::spreadsheet_main_view::handle_cell_contents_changed_event);
+  QObject::connect(this, &QTableWidget::currentCellChanged, this, &exhell::spreadsheet_main_view::handle_current_cell_changed_event);
 }
 
 void exhell::spreadsheet_main_view::handle_cell_clicked_event(int _row, int _col)
@@ -96,6 +97,24 @@ void exhell::spreadsheet_main_view::handle_cell_contents_changed_event(QTableWid
 
   #if EXHELL_EVENT_LOGS
     std::cout << MAGENTA << "cell contents changed event: " << exhell::number_to_exhell_row(row) << exhell::number_to_exhell_column(col) << RESET << std::endl;
+  #endif
+
+  // TODO: much more logic here
+}
+
+void exhell::spreadsheet_main_view::handle_current_cell_changed_event(int _cur_row, int _cur_col, int _prev_row, int _prev_col)
+{
+  #if EXHELL_EVENT_LOGS
+    if (_prev_row < 0 || _prev_col < 0)
+    {
+      std::cout << MAGENTA << "current cell changed event: " << exhell::number_to_exhell_row(_cur_row) << exhell::number_to_exhell_column(_cur_col) << RESET << std::endl;
+    }
+    else
+    {
+      std::cout
+        << MAGENTA << "current cell changed event: from " << exhell::number_to_exhell_row(_prev_row) << exhell::number_to_exhell_column(_prev_col)
+        << " to " << exhell::number_to_exhell_row(_cur_row) << exhell::number_to_exhell_column(_cur_col) << RESET << std::endl;
+    }
   #endif
 
   // TODO: much more logic here
