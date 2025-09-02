@@ -37,8 +37,14 @@ namespace exhell
 
   private slots:
 
+    /**
+     * Event handler for new actions.
+     */
     void handle_new_action_event(void);
 
+    /**
+     * Event handler for opening a file.
+     */
     void handle_open_action_event(void);
 
     void handle_save_action_event(void);
