@@ -35,12 +35,24 @@ set(MAIN_SRC
   src/main.cpp
 )
 
+set(PERSISTENCE_SRC
+  src/persistence/csv/exhell_csv_serializer.cpp
+  src/persistence/csv/exhell_csv_serializer.hpp
+  src/persistence/json/exhell_json_serializer.cpp
+  src/persistence/json/exhell_json_serializer.hpp
+  src/persistence/exhell_serializer_base.cpp
+  src/persistence/exhell_serializer_base.hpp
+  src/persistence/exhell_serializer_base.cpp
+  src/persistence/exhell_serializer_base.hpp
+)
+
 add_executable(ExHell
   ${MACRO_SOURCE}
   ${MAIN_SRC}
   ${WRAPPER_SOURCES}
   ${UI_SOURCES}
   ${UTIL_SOURCES}
+  ${PERSISTENCE_SRC}
 )
 
 target_include_directories(ExHell PRIVATE
