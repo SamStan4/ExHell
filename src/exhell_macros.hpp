@@ -2,6 +2,7 @@
 
 // For cout logs in the event handlers
 #define EXHELL_EVENT_LOGS true
+#define COMPILE_TIME_STATUS_LOGS false
 
 // for log colors
 #define BLACK "\033[0;30m"

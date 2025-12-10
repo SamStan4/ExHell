@@ -40,10 +40,19 @@ set(PERSISTENCE_SRC
   src/persistence/csv/exhell_csv_serializer.hpp
   src/persistence/json/exhell_json_serializer.cpp
   src/persistence/json/exhell_json_serializer.hpp
+  src/persistence/xml/exhell_xml_serializer.cpp
+  src/persistence/xml/exhell_xml_serializer.hpp
   src/persistence/exhell_serializer_base.cpp
   src/persistence/exhell_serializer_base.hpp
-  src/persistence/exhell_serializer_base.cpp
-  src/persistence/exhell_serializer_base.hpp
+)
+
+set(ENGINE_SRC
+  src/engine/cell_node/logic_node/logic_node.cpp
+  src/engine/cell_node/logic_node/logic_node.hpp
+  src/engine/cell_node/text_node/text_node.cpp
+  src/engine/cell_node/text_node/text_node.hpp
+  src/engine/cell_node/cell_node_base.cpp
+  src/engine/cell_node/cell_node_base.hpp
 )
 
 add_executable(ExHell
@@ -53,6 +62,7 @@ add_executable(ExHell
   ${UI_SOURCES}
   ${UTIL_SOURCES}
   ${PERSISTENCE_SRC}
+  ${ENGINE_SRC}
 )
 
 target_include_directories(ExHell PRIVATE
