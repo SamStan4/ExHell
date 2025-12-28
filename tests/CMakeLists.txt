@@ -1,0 +1,2 @@
+add_subdirectory(util_tests)
+add_subdirectory(persistence_tests)
