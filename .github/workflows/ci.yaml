@@ -1,0 +1,49 @@
+name: CI Test
+
+on:
+  push:
+    branches:
+      - main
+      - dev/**
+      - feature/**
+      - hotfix/**
+  pull_request:
+    branches:
+      - main
+      - dev/**
+      - feature/**
+      - hotfix/**
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: System info
+        shell: bash
+        run: |
+          echo "Running on:"
+          uname -a || ver
+
+      - name: Print environment info
+        shell: bash
+        run: |
+          echo "CI is running!"
+          node -v || true
+          python --version || true
+          gcc --version || true
